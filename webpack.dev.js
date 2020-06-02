@@ -10,14 +10,12 @@ module.exports = merge(common, {
         filename: "[name].js",
         path: path.resolve(__dirname, "dist")
     },
+    module: {
     rules: [
         {
             test: /\.css$/,
             use: ["style-loader", "css-loader"], // 1. CSS Loaders transform css into JS, 2. Style Loader injects it to the DOM
         }
     ],
-    plugins: [new HtmlWebpackPlugin({
-        title: "Word Mixer Webpack!",
-        template: "./src/index.html"
-    })]
+}
 });
