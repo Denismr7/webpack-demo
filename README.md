@@ -1,4 +1,5 @@
-# Configuración básica de Webpack, loaders y plugins comunes.
+# Configuración básica de Webpack
+
 1. Instalar webpack y webpack-cli mediante npm:
     - npm install --save-dev webpack webpack-cli
     
@@ -25,3 +26,22 @@
         - En el código del repo se puede encontrar una configuración básica de rules para manejar imágenes, CSS... y añadir o quitar loaders según las necesidades del proyecto. HTML-loader es necesario para que webpack sea capaz de detectar elementos estáticos como imágenes, archivos, etc...
      - plugins: En plugins podemos utilizar html-webpack-plugin para indicar dónde se encuentra nuestro fichero HTML, mini-css-extract-plugin para extraer el CSS del DOM o clean-webpack-plugin para limpiar la carpeta de dist en caso de trabajar con ficheros hasheados. Plugins es un array formado por los distintos plugins que queramos utilizar previamente importados (ej. plugins: [new MiniCSSExtractPlugin({ filename: "styles.[contentHash].css }), new OtroPlugin(), ...]. HTML Webpack Plugin es imprescindible para poder generar un fichero HTML en el bundle e inyectarle el JS.
 4. Script en 'package.json' (ej. "start": "webpack --config webpack.config.js") para arrancar webpack
+
+# Loaders y plugins comunes
+- HTML:
+    - [PLUGIN] HTMLWebpackPlugin ("html-webpack-plugin"): Para identificar el HTML, modificar el nombre del HTML de salida, minimizarlo, etc...
+    - [LOADER] HTML Loader ("html-loader"): Útil para detectar archivos estáticos en el html (imágenes, videos, archivos...). Requiere loaders para tratar estos archivos.
+    - 
+ - CSS/SASS:
+    - [LOADER] Style loader ("style-loader"): Inyecta el código CSS que encuentre en el output en el DOM
+    - [LOADER] CSS loader ("css-loader"): Transforma un archivo CSS en CommonJS
+    - [LOADER] SASS loader ("sass-loader"): Compilador de SASS a CSS
+    - [PLUGIN] MiniCSSExtractPlugin ("mini-css-extract-plugin"): Extraer el CSS del JS en un archivo separado
+    - [PLUGIN] Optimize CSS Assets Webpack Plugin ("optimize-css-assets-webpack-plugin"): Minimizador de CSS para producción.
+ - Imágenes/Archivos estáticos:
+    - [LOADER] File-loader ("file-loader"): Trata los archivos estáticos que hayan en el template. Es necesario HTML loader.
+ - Webpack:
+    - Webpack Dev Server ("webpack-dev-server"): Lanzar servidor local para trabajar durante el desarrollo.
+    - Webpack merge ("webpack-merge"): Básico para trabajar con varias configuraciones de webpack.
+    - Clean webpack plugin ("clean-webpack-plugin"): Limpia la carpeta dist en cada producción. Útil si producimos ficheros hasheados.
+ 
