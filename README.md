@@ -23,3 +23,4 @@
            ]
             }
         - En el código del repo se puede encontrar una configuración básica de rules para manejar imágenes, CSS... y añadir o quitar loaders según las necesidades del proyecto. HTML-loader es necesario para que webpack sea capaz de detectar elementos estáticos como imágenes, archivos, etc...
+     - plugins: En plugins podemos utilizar html-webpack-plugin para indicar dónde se encuentra nuestro fichero HTML, mini-css-extract-plugin para extraer el CSS del DOM o clean-webpack-plugin para limpiar la carpeta de dist en caso de trabajar con ficheros hasheados. Plugins es un array formado por los distintos plugins que queramos utilizar previamente importados (ej. plugins: [new MiniCSSExtractPlugin({ filename: "styles.[contentHash].css }), new OtroPlugin(), ...]
