@@ -5,7 +5,6 @@ const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(common, {
     mode: "production",
@@ -16,16 +15,7 @@ module.exports = merge(common, {
     optimization: {
         minimizer: [
             new OptimizeCSSAssetsWebpackPlugin(),
-            new TerserPlugin(),
-            new HtmlWebpackPlugin({
-                title: "Word Mixer Webpack!",
-                template: "./src/index.html",
-                minify: {
-                    removeAttributeQuotes: true,
-                    collapseWhitespace: true,
-                    removeComments: true
-                }
-            })
+            new TerserPlugin()
         ]
     },
     plugins: [new MiniCSSExtractPlugin({
