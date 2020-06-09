@@ -44,4 +44,20 @@
     - Webpack Dev Server ("webpack-dev-server"): Lanzar servidor local para trabajar durante el desarrollo.
     - Webpack merge ("webpack-merge"): Básico para trabajar con varias configuraciones de webpack.
     - Clean webpack plugin ("clean-webpack-plugin"): Limpia la carpeta dist en cada producción. Útil si producimos ficheros hasheados.
- 
+
+# Webpack y React: Configuración básica.
+
+0. Al igual que con el resto de proyectos, instalamos webpack y webpack-cli:
+   - npm install --save-dev webpack webpack-cli
+
+1. Instalar las dependencias, las cuales serán:
+    - npm install --save-dev react react-dom @babel-core babel-loader @babel/preset-react html-webpack-plugin
+
+2. Crear y configurar el archivo webpack.config.js:
+   - En entry indicamos donde se ubica el archivo .js/.jsx principal
+   - En output el nombre del archivo de salida y la ubicación con path si lo deseamos: { filename: "bundle.js",path: path.resolve(__dirname, "dist") }
+   - En module cargamos el loader de Babel: module: { rules: [ { test: /\.jsx?$/, exclude: /node_modules/, use: { loader: "babel-loader", options: { presets: ['@babel/preset-react'] } } } ] }
+   - Importamos y añadimos HTMLWebpackPlugin para que nos detecte nuestro fichero index.html: plugins: [new HTMLWebpackPlugin({ template: "ubicación del HTML" })]
+3. Añadir al package.json el script para facilitar el arranque de webpack:
+   - "start": "webpack --config webpack.config.js"
+Opc. Es recomendable además instalar webpack-dev-server para levantar un servidor ligero mientras estamos en fase de desarrollo
