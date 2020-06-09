@@ -60,4 +60,4 @@
    - Importamos y añadimos HTMLWebpackPlugin para que nos detecte nuestro fichero index.html: plugins: [new HTMLWebpackPlugin({ template: "ubicación del HTML" })]
 3. Añadir al package.json el script para facilitar el arranque de webpack:
    - "start": "webpack --config webpack.config.js"
-Opc. Es recomendable además instalar webpack-dev-server para levantar un servidor ligero mientras estamos en fase de desarrollo
+4. (OPC). Es recomendable además instalar webpack-dev-server para levantar un servidor ligero mientras estamos en fase de desarrollo
